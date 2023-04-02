@@ -1,0 +1,9 @@
+apply from: "${rootDir}/gradle/java.gradle"
+
+dependencies {
+    implementation libs.springBoot
+    implementation libs.hibernate
+    implementation libs.jackson
+    implementation project(":db-api")
+    implementation project(":db-liquibase")
+}

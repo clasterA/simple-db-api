@@ -1,0 +1,35 @@
+apply plugin: 'java-library'
+
+sourceCompatibility = JavaVersion.VERSION_19
+targetCompatibility = JavaVersion.VERSION_19
+
+task dist {
+    dependsOn 'build'
+}
+
+dependencies {
+    implementation libs.commons
+
+    compileOnly libs.lombok
+    testCompileOnly libs.lombok
+    annotationProcessor libs.lombok
+    testAnnotationProcessor libs.lombok
+
+    implementation libs.mapstruct
+    annotationProcessor libs.mapstruct_ap
+
+    testImplementation libs.junit5
+    testRuntimeOnly libs.junit5engine
+}
+
+apply from: "${rootDir}/gradle/dep-management.gradle"
+
+apply plugin: 'ru.vyarus.quality'
+
+quality {
+    checkstyle = false
+    pmd = false
+    spotbugs = true
+    spotbugsPlugin 'com.h3xstream.findsecbugs:findsecbugs-plugin:1.11.0'
+    codenarc = false
+}

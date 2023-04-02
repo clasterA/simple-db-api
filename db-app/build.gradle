@@ -1,0 +1,18 @@
+apply from: "${rootDir}/gradle/java.gradle"
+apply from: "${rootDir}/gradle/spring-boot.gradle"
+
+dependencies {
+    implementation libs.jackson
+    implementation libs.springBootValidation
+    implementation libs.springBootWeb
+    implementation libs.swagger2
+    implementation libs.swaggerUi
+
+    implementation project(":db-api")
+    implementation project(":db-core")
+    implementation project(":db-grpc-server")
+}
+
+springBoot {
+    mainClass = 'com.simple.db.SimpleDBApp'
+}

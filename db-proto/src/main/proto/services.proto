@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package com.simple.db.proto;
+
+option java_multiple_files = true;
+option java_package = "com.simple.db.service.proto";
+
+import "google/protobuf/wrappers.proto";
+import "google/protobuf/empty.proto";
+import "messages.proto";
+
+service TestService {
+
+  rpc createTestRecord(CreateTestRecordCommand) returns (TestDto);
+  rpc getTestRecordById(GetTestRecordCommand) returns (TestDto);
+  rpc updateTestRecord(UpdateTestRecordCommand) returns (TestDto);
+
+}

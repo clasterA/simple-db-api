@@ -1,0 +1,50 @@
+apply plugin: 'com.google.protobuf'
+
+dependencies {
+    implementation libs.grpc
+    implementation libs.grpcGen
+}
+
+protobuf {
+
+    protoc {
+        artifact = "com.google.protobuf:protoc:${versions.protocVersion}"
+    }
+    plugins {
+        grpc {
+            artifact = "io.grpc:protoc-gen-grpc-java:${versions.grpcVersion}"
+        }
+    }
+    generateProtoTasks {
+        all().each { task ->
+            task.builtins {
+                java {
+                }
+            }
+            task.plugins {
+                grpc {
+                }
+            }
+        }
+    }
+}
+
+sourceSets {
+    main {
+        java {
+            srcDirs 'build/generated/source/proto/main/java'
+            srcDirs 'build/generated/source/proto/main/grpc'
+        }
+        proto {
+            srcDir 'src/main/proto'
+        }
+    }
+}
+
+processResources {
+
+    filesMatching("**/*.proto"){
+        duplicatesStrategy = DuplicatesStrategy.INCLUDE
+    }
+
+}

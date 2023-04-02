@@ -1,0 +1,21 @@
+apply plugin: 'io.spring.dependency-management'
+
+dependencyManagement {
+
+    imports {
+        mavenBom "org.springframework.boot:spring-boot-dependencies:${springBootVersion}"
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:${versions.springCloudVersion}"
+    }
+
+    dependencies {
+        dependency 'com.google.guava:guava:28.1-jre'
+        // As mentioned on github (https://github.com/LogNet/grpc-spring-boot-starter)
+        // when using spring dependency-management plugin, the version of grpc-spring-boot-starter
+        // could be different (see the table in the documentation above)
+        // The suggested solution is to add dependency resolution rule for io.grpc group.
+        // However, adding dependency as below also works.
+        dependency "io.github.lognet:grpc-spring-boot-starter:${versions.springGrpcVersion}"
+    }
+
+}
+

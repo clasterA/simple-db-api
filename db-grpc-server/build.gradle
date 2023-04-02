@@ -1,0 +1,12 @@
+apply from: "${rootDir}/gradle/java.gradle"
+
+dependencies {
+    implementation libs.springBoot
+    implementation libs.springGrpc
+    implementation libs.springBootSecurity
+    implementation libs.hibernate
+
+    implementation project(":db-api")
+    implementation project(":db-core")
+    implementation project(":db-proto")
+}

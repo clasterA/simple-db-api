@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- http://spotbugs.readthedocs.io/en/latest/filter.html -->
+<FindBugsFilter>
+
+    <!-- Do not check groovy -->
+    <Match>
+        <Source name="~.*\.groovy"/>
+    </Match>
+
+    <!-- Disable check -->
+    <Match>
+        <!-- The reason for disable is guava, which use @Nullable for function and if you want not nullable function
+         you will have to use @NotNull annotation, which contradict with original contract
+         (actually not, because guava intend weaker semantics). So disable this check to be able to properly
+         use nullability annotations -->
+        <Bug pattern="NP_METHOD_PARAMETER_TIGHTENS_ANNOTATION"/>
+    </Match>
+    <Match>
+        <!-- Disabled as confusing check (very misleading description) and also not so useful -->
+        <Bug pattern="NP_NULL_ON_SOME_PATH_FROM_RETURN_VALUE"/>
+    </Match>
+    <Match>
+        <!-- Disabled as our application is used as REST API-->
+        <Bug pattern="SPRING_CSRF_PROTECTION_DISABLED"/>
+    </Match>
+    <Match>
+        <!-- Disabled as the suggested solution with logback pattern change does not remove this type of error -->
+        <Bug pattern="CRLF_INJECTION_LOGS"/>
+    </Match>
+
+    <!-- Disabling EI_EXPOSE warnings -->
+    <Match>
+        <Bug pattern="EI_EXPOSE_REP2"/>
+    </Match>
+    <Match>
+        <Bug pattern="EI_EXPOSE_REP"/>
+    </Match>
+
+    <!-- Disable SQL/JPQL injection (with JPA) -->
+    <Match>
+        <Bug pattern="SQL_INJECTION_JPA"/>
+    </Match>
+
+    <!-- Do not check class -->
+    <Match>
+        <Class name="co.saltpay.testing.RandomValues"/>
+    </Match>
+
+    <Match>
+        <Class name="co.saltpay.testing.BaseControllerTest"/>
+        <Bug pattern="ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD"/>
+    </Match>
+
+    <Match>
+        <Bug pattern="UCF_USELESS_CONTROL_FLOW"/>
+    </Match>
+
+    <Match>
+        <Bug pattern="MS_EXPOSE_REP"/>
+    </Match>
+
+    <Match>
+        <Bug pattern="RV_RETURN_VALUE_IGNORED_NO_SIDE_EFFECT"/>
+    </Match>
+
+
+</FindBugsFilter>

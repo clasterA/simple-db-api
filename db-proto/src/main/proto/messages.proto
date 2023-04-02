@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+package com.simple.db.proto;
+
+import "google/protobuf/timestamp.proto";
+import "google/type/money.proto";
+
+message CreateTestRecordCommand {
+  optional string name = 1;
+  optional string description = 2;
+  optional string metadata = 3;
+}
+
+message GetTestRecordCommand {
+  optional string uuid = 1;
+}
+
+message UpdateTestRecordCommand {
+  optional string uuid = 1;
+  optional string name = 2;
+  optional string description = 3;
+  optional string metadata = 4;
+}
+
+message TestDto {
+  optional string uuid = 1;
+  optional string name = 2;
+  optional string description = 3;
+  optional RecordStateEnum state = 4;
+  optional google.protobuf.Timestamp createdAt = 5;
+  optional google.protobuf.Timestamp updatedAt = 6;
+  optional string  metadata = 7;
+}
+
+enum RecordStateEnum {
+  RECORD_STATE_ENUM_UNSPECIFIED = 0;
+  RECORD_STATE_ENUM_ACTIVE = 1;
+  RECORD_STATE_ENUM_HIDDEN = 2;
+  RECORD_STATE_ENUM_DELETED = 3;
+}

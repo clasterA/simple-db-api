@@ -1,0 +1,49 @@
+server:
+  address: 0.0.0.0
+  port: 8090
+  servlet:
+    context-path: /
+
+spring:
+  application:
+    name: simple-db-api
+  sql:
+    init:
+      continue-on-error: false
+      platform: postgres
+  datasource:
+    url: ${DB_JDBC_URL:jdbc:postgresql://localhost:5432/simpledb}
+    username: ${DB_USERNAME:postgres}
+    password: ${DB_PASSWORD:password}
+    driver-class-name: org.postgresql.Driver
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      connection-timeout: 3000
+      maximum-pool-size: 5
+      minimum-idle: 1
+      idle-timeout: 100000
+      max-lifetime: 120000
+  liquibase:
+    change-log: classpath:db.changelog-root.xml
+  flyway:
+    enabled: false
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQL10Dialect
+    open-in-view: false
+    properties:
+      hibernate:
+        jdbc:
+          time_zone: UTC
+          batch_size: 30
+          batch_versioned_data: true
+        temp:
+          use_jdbc_metadata_defaults: false
+        order_inserts: true
+        order_updates: true
+        show_sql: false
+        use_sql_comments: false
+        format_sql: true
+        naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
+
+grpc:
+  port: 6565

@@ -1,0 +1,13 @@
+version: "3"
+services:
+
+  ledger-postgres:
+    image: postgres:13-alpine
+    volumes:
+      - ./postgres:/docker-entrypoint-initdb.d
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: "user"
+      POSTGRES_PASSWORD: "password"
+      POSTGRES_DB: "simpledb"

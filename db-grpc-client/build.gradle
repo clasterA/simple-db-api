@@ -1,0 +1,9 @@
+apply from: "${rootDir}/gradle/java.gradle"
+
+dependencies {
+    implementation libs.springGrpc
+    implementation libs.grpc
+
+    implementation project(":db-api")
+    implementation project(':db-proto')
+}

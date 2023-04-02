@@ -1,0 +1,9 @@
+rootProject.name = 'simple-db-api'
+
+include 'db-api'
+include 'db-app'
+include 'db-core'
+include 'db-grpc-server'
+include 'db-grpc-client'
+include 'db-liquibase'
+include 'db-proto'

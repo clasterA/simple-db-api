@@ -1,0 +1,175 @@
+ext {
+    versions = [
+            lombok                  : '1.18.22',
+            hibernate               : '5.6.8.Final',
+            hibernateValidator      : '6.0.17.Final',
+            hikari                  : '3.4.1',
+            junitJupiter            : '5.6.2',
+            swagger                 : '3.0.0',
+            swaggerAnnotation       : '1.6.6',
+            mapstruct               : '1.5.1.Final',
+            mapstructStrategy       : '1.39',
+            jackson                 : '2.13.2',
+            bouncycastle            : '1.68',
+            groovyShell             : '3.0.11',
+            logbookSpringBootStarter : '2.14.0',
+            slf4jApi                : '1.7.36',
+            logbackClassic          : '1.2.11',
+            javaxActivation         : '1.1.1',
+            assertCore              : '3.23.1',
+            jsonUnitFluent          : '2.35.0',
+            awaitility              : '4.2.0',
+            httpclient              : '4.5.13',
+            springDataJpa           : '2.6.3',
+            liquibase               : '4.13.0',
+            pgDriver                : '42.3.6',
+            springBootStarter       : '2.7.3',
+            springSecurityTest      : '5.7.1',
+            testContainersVersion   : '1.17.2',
+            swaggerPlugin           : '2.2.0',
+            springDocOpenApiVersion : '1.5.9',
+            swaggerVersion          : '3.0.0',
+            springGrpcVersion       : '4.8.0',
+            grpcVersion             : '1.49.0',
+            protocVersion           : '3.21.6',
+            springCloudVersion      : '2021.0.3',
+            liquibaseVersion        : '4.15.0'
+    ]
+    libs = [
+            springBootSecurity     : [
+                    "org.springframework.boot:spring-boot-starter-security"
+            ],
+            jackson                : [
+                    "io.swagger:swagger-annotations:${versions.swaggerAnnotation}",
+                    "com.fasterxml.jackson.core:jackson-core:${versions.jackson}",
+                    "com.fasterxml.jackson.core:jackson-annotations:${versions.jackson}",
+                    "com.fasterxml.jackson.core:jackson-databind:${versions.jackson}",
+                    "com.fasterxml.jackson.jaxrs:jackson-jaxrs-json-provider:${versions.jackson}",
+                    "com.fasterxml.jackson.datatype:jackson-datatype-jsr310:${versions.jackson}"
+            ],
+            mapstruct              : [
+                    "org.mapstruct:mapstruct:${versions.mapstruct}"
+            ],
+            mapstruct_ap           : [
+                    "org.mapstruct:mapstruct-processor:${versions.mapstruct}",
+                    "no.entur.mapstruct.spi:protobuf-spi-impl:${versions.mapstructStrategy}"
+            ],
+            logging                : [
+                    "org.slf4j:slf4j-api:${versions.slf4jApi}",
+                    "ch.qos.logback:logback-classic:${versions.logbackClassic}"
+            ],
+            logbook                : [
+                    "org.zalando:logbook-spring-boot-starter:${versions.springBootStarter}"
+            ],
+            lombok                 : [
+                    "org.projectlombok:lombok:${versions.lombok}"
+            ],
+            springBoot             : [
+                    "org.springframework.boot:spring-boot",
+                    "org.springframework.boot:spring-boot-starter",
+                    "org.springframework.boot:spring-boot-starter-parent:${versions.springBootStarter}",
+                    "org.springframework.data:spring-data-commons:${versions.springBootStarter}",
+                    "org.springframework.boot:spring-boot-starter-jdbc:${versions.springBootStarter}",
+                    "org.springframework.boot:spring-boot-starter-actuator",
+                    "org.springframework.boot:spring-boot-configuration-processor",
+                    "javax.activation:activation:${versions.javaxActivation}",
+                    "javax.inject:javax.inject:1"
+            ],
+            springBootValidation       : [
+                    "org.springframework.boot:spring-boot-starter-validation:${versions.springBootStarter}",
+            ],
+            springBootWeb          : [
+                    "org.springframework.boot:spring-boot-starter-web:${versions.springBootStarter}",
+                    "org.springframework.boot:spring-boot-starter-webflux:${versions.springBootStarter}",
+            ],
+            springBootCache        : [
+                    "org.springframework.boot:spring-boot-starter-cache"
+            ],
+            springJdbc             : [
+                    "org.springframework:spring-jdbc"
+            ],
+            hibernate              : [
+                    "org.springframework.boot:spring-boot-starter-data-jpa:${versions.springBootStarter}",
+                    "org.hibernate:hibernate-core:${versions.hibernate}",
+                    "org.hibernate:hibernate-java8:${versions.hibernate}",
+                    "org.hibernate:hibernate-envers:${versions.hibernate}",
+                    "org.hibernate:hibernate-validator:${versions.hibernateValidator}",
+                    "com.zaxxer:HikariCP:${versions.hikari}",
+                    "com.vladmihalcea.flexy-pool:flexy-pool-core-java9:2.1.2",
+                    'com.vladmihalcea:hibernate-types-52:2.9.9',
+                    "org.springframework.data:spring-data-jpa:${versions.springDataJpa}",
+                    "org.postgresql:postgresql:${versions.pgDriver}",
+            ],
+            liquibase : ["org.liquibase:liquibase-core:${versions.liquibase}"],
+            springTest             : [
+                    "org.springframework.boot:spring-boot-starter-test",
+                    "org.springframework.boot:spring-boot-starter-jdbc",
+                    "org.springframework.security:spring-security-test:${versions.springSecurityTest}"
+            ],
+            junit5                 : [
+                    "org.junit.jupiter:junit-jupiter-api:${versions.junitJupiter}",
+                    "org.junit.jupiter:junit-jupiter-params:${versions.junitJupiter}",
+                    "org.assertj:assertj-core:${versions.assertCore}",
+                    "net.javacrumbs.json-unit:json-unit-fluent:${versions.jsonUnitFluent}",
+                    "org.awaitility:awaitility:${versions.awaitility}"
+            ],
+            junit5engine           : [
+                    "org.junit.jupiter:junit-jupiter-engine:${versions.junitJupiter}"
+            ],
+            swaggerPlugin               : [
+                    "io.swagger.core.v3.swagger-gradle-plugin:${versions.swaggerPlugin}",
+            ],
+            apacheHttpClient       : [
+                    'org.apache.httpcomponents:httpclient:${versions.httpclient}'
+            ],
+
+            bouncycastle   : [
+                    "org.bouncycastle:bcprov-jdk15on:${versions.bouncycastle}",
+                    "org.bouncycastle:bcpkix-jdk15on:${versions.bouncycastle}"
+            ],
+            groovyShell    : "org.codehaus.groovy:groovy-jsr223:${versions.groovyShell}",
+            springDocOpenApiUi     : [
+                    "org.springdoc:springdoc-openapi-ui:${versions.springDocOpenApiVersion}"
+            ],
+            swagger2               : [
+                    "io.springfox:springfox-boot-starter:${versions.swaggerVersion}",
+            ],
+            swaggerUi              : [
+                    "io.springfox:springfox-swagger-ui:${versions.swaggerVersion}"
+            ],
+            springGrpc            : [
+                    "io.github.lognet:grpc-spring-boot-starter:${versions.springGrpcVersion}",
+                    "io.github.lognet:grpc-client-spring-boot-starter:${versions.springGrpcVersion}"
+            ],
+            grpc                  : [
+                    "io.grpc:grpc-services:${versions.grpcVersion}"
+            ],
+            grpcGen               : [
+                    'jakarta.annotation:jakarta.annotation-api:1.3.5'
+            ],
+            commons               : [
+                    "org.apache.commons:commons-lang3:3.9",
+                    "org.apache.commons:commons-text:1.8",
+                    "org.apache.commons:commons-collections4:4.4",
+                    "com.google.guava:guava:28.1-jre",
+                    "commons-beanutils:commons-beanutils:1.9.4",
+                    "commons-codec:commons-codec:1.13",
+                    "commons-io:commons-io:2.6",
+                    "commons-validator:commons-validator:1.6",
+                    "com.googlecode.libphonenumber:libphonenumber:8.11.3",
+                    'org.modelmapper:modelmapper:2.3.6'
+            ],
+            restAssured           : [
+                    'io.rest-assured:rest-assured:4.1.2',
+                    'com.sun.xml.bind:jaxb-osgi:2.3.1'
+            ],
+    ]
+}
+
+allprojects {
+    configurations.all {
+        exclude group: 'org.junit.vintage'
+        exclude group: 'junit'
+    }
+}
+

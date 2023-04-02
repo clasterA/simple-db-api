@@ -1,0 +1,62 @@
+buildscript {
+    ext {
+        springBootVersion = '2.7.3'
+    }
+    repositories {
+        mavenCentral()
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+    }
+    dependencies {
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:$springBootVersion"
+        classpath 'org.unbroken-dome.gradle-plugins:gradle-testsets-plugin:4.0.0'
+        classpath 'io.spring.gradle:dependency-management-plugin:1.0.13.RELEASE'
+        classpath "com.moowork.gradle:gradle-node-plugin:1.3.1"
+        classpath 'com.google.protobuf:protobuf-gradle-plugin:0.8.13'
+        classpath 'ru.vyarus:gradle-quality-plugin:4.8.0'
+    }
+}
+
+plugins {
+    id 'idea'
+    id 'io.spring.dependency-management' version '1.0.13.RELEASE'// apply false
+    id "org.unbroken-dome.test-sets" version "4.0.0"
+    id 'pl.allegro.tech.build.axion-release' version '1.13.9'
+    id 'com.github.ben-manes.versions' version '0.42.0'
+    id 'io.swagger.core.v3.swagger-gradle-plugin' version '2.2.2'
+}
+
+apply from: "${rootDir}/gradle/dependencies.gradle"
+
+description = 'Simple cms db service'
+
+allprojects {
+
+    group = 'com.simple'
+    project.version = rootProject.version
+
+    buildscript {
+        repositories {
+            mavenCentral()
+        }
+    }
+
+    repositories {
+        mavenCentral()
+    }
+
+    tasks.withType(JavaCompile) {
+        options.encoding = 'UTF-8'
+    }
+
+}
+
+defaultTasks "clean", "build", "assemble"
+
+apply from: "${rootDir}/gradle/wrapper.gradle"
+
+subprojects {
+    task allDependencies(type: DependencyReportTask) {}
+}
+

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet id="com.simple.db.create_schema" author="a.z.">
+        <sql>
+            CREATE SCHEMA IF NOT EXISTS simpledb;
+            CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+        </sql>
+    </changeSet>
+
+    <changeSet id="com.simple.db.add_tables" author="a.z">
+        <sql>
+            CREATE TABLE simpledb.test
+            (
+                id                 uuid          NOT NULL,
+                "name"             varchar(255)  NOT NULL,
+                description        varchar(255)  NULL,
+                state              varchar(255)  NOT NULL,
+                created_at         timestamp     NOT NULL,
+                updated_at         timestamp     NULL,
+                metadata           jsonb         NULL,
+                CONSTRAINT pk_test PRIMARY KEY (id)
+            );
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>
